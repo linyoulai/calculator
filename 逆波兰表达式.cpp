@@ -1,5 +1,5 @@
 #include <iostream>//前缀表达式：prefixExpression
-#include <stack>
+#include <stack>//可以进行小数运算，加减乘除，乘方
 #include <string>
 #include <iomanip>
 #include <string>
@@ -78,6 +78,10 @@ double performOperation(double operand1, double operand2, char op) {
         }
         return operand1 / operand2;
     case '^':
+        if (operand1 == 0 && operand2 == 0) {
+            cout << "您输入的表达式在数学上不成立，请重新输入！" << endl;
+            return -1;
+        }
         return pow(operand1, operand2);
     default:
         return 0;
