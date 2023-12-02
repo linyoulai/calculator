@@ -73,13 +73,13 @@ double performOperation(double operand1, double operand2, char op) {
         return operand1 * operand2;
     case '/':
         if (operand2 == 0) {
-            cout << "您输入的表达式在数学上不成立，请重新输入！" << endl;
+            cout << "0不能作除数！" << endl;
             return -1;
         }
         return operand1 / operand2;
     case '^':
         if (operand1 == 0 && operand2 == 0) {
-            cout << "您输入的表达式在数学上不成立，请重新输入！" << endl;
+            cout << "0的0次方无意义！" << endl;
             return -1;
         }
         return pow(operand1, operand2);
@@ -231,10 +231,10 @@ void eraseBlank(string& expression) {
 
 void calculate(string infixExpression) {
     {
-        cout << "Enter an infix expression(range from -1.79769 * 10^308 to 1.79769 * 10^308): ";
+        cout << "输入算式: ";
         getline(cin, infixExpression);
         int precision;
-        cout << "Enter the precision of the expression(how many digits are reserved after the decimal point?):";
+        cout << "小数点后保留几位数字？:";
         cin >> precision;
         infixExpression = handleEndEqualSign(infixExpression);
 
@@ -242,10 +242,10 @@ void calculate(string infixExpression) {
 
         insertZero(infixExpression);
         string postfixExpression = infixToPostfix(infixExpression);
-        cout << "Postfix expression: " << postfixExpression << endl;
-        cout << "the result of calculation is：" << scientific << setprecision(precision) << evaluatePostfix(postfixExpression) << endl
-            << "The above calculation results are correct without prompting errors!" << endl;
-        cout << "-------------------------------------------split line-----------------------------------------------" << endl;
+        //cout << "Postfix expression: " << postfixExpression << endl;
+        cout << "计算结果是：" << scientific << setprecision(precision) << evaluatePostfix(postfixExpression) << endl
+            << "如果没有报错，结果就是正确的!" << endl;
+        cout << "-------------------------------------------分割线-----------------------------------------------" << endl;
 
     }
 }
